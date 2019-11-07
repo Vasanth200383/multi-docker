@@ -20,7 +20,3 @@ after_sucess:
     - docker push vasanth/multi-nginx
     - docker push vasanth/multi-server
     - docker push vasanth/multi-worker
-
-
-
-
