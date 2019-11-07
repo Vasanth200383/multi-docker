@@ -13,6 +13,7 @@ after_sucess:
   - docker build -t vasanth/multi-nginx ./nginx
   - docker build -t vasanth/multi-server ./server
   - docker build -t vasanth/multi-worker ./worker
+  
   # log in to thte docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # take those image and push them to docker hub
@@ -20,4 +21,4 @@ after_sucess:
   - docker push vasanth/multi-nginx
   - docker push vasanth/multi-server
   - docker push vasanth/multi-worker
-  
+
