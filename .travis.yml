@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
   - docker
@@ -5,9 +6,10 @@ services:
 before_install:
   - docker build -t vasanth195500/react-test -f ./client/Dockerfile.dev ./client
 
+script:
+  - docker run -e CI=true vasanth195500/react-test npm test
 
-
-
+after_sucess:
   - docker build -t vasanth195500/multi-client ./client
   - docker build -t vasanth195500/multi-nginx ./nginx
   - docker build -t vasanth195500/multi-server ./server
@@ -19,4 +21,5 @@ before_install:
   - docker push vasanth195500/multi-nginx
   - docker push vasanth195500/multi-server
   - docker push vasanth195500/multi-worker
+
  
