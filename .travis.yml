@@ -20,4 +20,4 @@ after_sucess:
   - docker push vasanth195500/multi-nginx
   - docker push vasanth195500/multi-server
   - docker push vasanth195500/multi-worker
-  - echo "completed pushing...." 
+ 
