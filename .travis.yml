@@ -23,6 +23,7 @@ after_success:
   - docker push vasanth195500/multi-server
   - docker push vasanth195500/multi-worker
 
+
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
