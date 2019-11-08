@@ -5,7 +5,10 @@ services:
 before_install:
   - docker build -t vasanth/react-test -f ./client/Dockerfile.dev ./client
 
+script:
+  - docker run USERNAME/react-test npm test -- --coverage
 
+after_sucess:
   - docker build -t vasanth/multi-client ./client
   - docker build -t vasanth/multi-nginx ./nginx
   - docker build -t vasanth/multi-server ./server
@@ -18,4 +21,3 @@ before_install:
   - docker push vasanth/multi-server
   - docker push vasanth/multi-worker
   - echo "completed pushing...." 
-
