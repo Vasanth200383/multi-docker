@@ -6,13 +6,15 @@ services:
 before_install:
   - docker build -t vasanth195500/react-test -f ./client/Dockerfile.dev ./client
 
+script:
+  - docker run -e CI=true vasanth195500/react-test npm test
 
+after_success:
   - docker build -t vasanth195500/multi-client ./client
   - docker build -t vasanth195500/multi-nginx ./nginx
   - docker build -t vasanth195500/multi-server ./server
   - docker build -t vasanth195500/multi-worker ./worker
   # log in to thte docker CLI
-
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # take those image and push them to docker hub
   - docker push vasanth195500/multi-client
@@ -20,4 +22,4 @@ before_install:
   - docker push vasanth195500/multi-server
   - docker push vasanth195500/multi-worker
 
-
+ 
